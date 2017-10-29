@@ -1,0 +1,35 @@
+group 'com.audiocodes'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.1.51'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+            [group: "org.jetbrains.kotlin", name: "kotlin-stdlib", version: "$kotlin_version"],
+            [group: 'org.reactivestreams', name: 'reactive-streams', version: '1.0.1'],
+            [group: 'org.reactivestreams', name: 'reactive-streams-tck', version: '1.0.1'],
+            [group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.5']
+    )
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
